@@ -209,7 +209,8 @@ router.post('/register',(req,res)=>{
                                     ecpn3
                                 });
             
-
+                    //store auth num
+                    const authNo = req.user.authNo;
                     //hash pasword
                     bcrypt.genSalt(10,(err,salt)=>
                         bcrypt.hash(newUser.password, salt, (err,hash)=>{
