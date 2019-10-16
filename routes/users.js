@@ -50,7 +50,7 @@ router.post('/register',(req,res)=>{
     if(!Fname || !Lname || !email || !password || !password2 ||
         !bloodgroup || !DOB || !phoneno || !vno || !aadhaar || !city
         ||!add1 || !add2 || !state || !ecfn1 || !ecln1 || !ecpn1
-        || !ecfn2 || !ecln2 || !ecpn2 || !ecfn3 || !ecln3 || !ecpn3 || !macno )
+        || !ecfn2 || !ecln2 || !ecpn2 || !ecfn3 || !ecln3 || !ecpn3 )
     {
         errors.push({msg:'Please Fill In All Fields'});
     }
@@ -209,8 +209,6 @@ router.post('/register',(req,res)=>{
                                     ecpn3
                                 });
             
-                    //store auth num
-                    const authNo = req.user.authNo;
                     //hash pasword
                     bcrypt.genSalt(10,(err,salt)=>
                         bcrypt.hash(newUser.password, salt, (err,hash)=>{
