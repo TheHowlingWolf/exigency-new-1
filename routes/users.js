@@ -28,7 +28,8 @@ router.post('/register',(req,res)=>{
     const DOB = req.body.DOB;
     const phoneno = req.body.phone;
     const vno = req.body.vno;
-    const macno= req.body.macno;
+    if(req.body.macno !== '')
+    var macno= req.body.macno;
     const aadhaar = req.body.aadhaar;
     const city = req.body.city;
     const add1 = req.body.add1;
