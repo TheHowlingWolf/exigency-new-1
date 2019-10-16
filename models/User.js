@@ -92,6 +92,9 @@ const UserSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    authNo:{
+        type:Number,
+    }
 });
 
 const User= mongoose.model('User',UserSchema);

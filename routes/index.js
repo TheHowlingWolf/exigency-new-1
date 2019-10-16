@@ -33,7 +33,8 @@ router.get('/analysis',(req,res)=>{
         ecpn2:req.user.ecpn2,
         ecfn3:req.user.ecfn3,
         ecln3:req.user.ecln3,
-        ecpn3:req.user.ecpn3
+        ecpn3:req.user.ecpn3,
+        authNo:req.user.authNo
     });
 });
 
@@ -62,7 +63,8 @@ router.get('/dashboard' ,(req,res)=>{
         ecpn2:req.user.ecpn2,
         ecfn3:req.user.ecfn3,
         ecln3:req.user.ecln3,
-        ecpn3:req.user.ecpn3
+        ecpn3:req.user.ecpn3,
+        authNo:req.user.authNo
     });  
 }
 );
