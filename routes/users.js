@@ -14,6 +14,10 @@ router.get('/login',(req,res)=>{
     res.render('login');
 })
 
+//redirect exigency
+router.get('/index',(req,res)=>{
+    res.render('index');
+});
 
 //Register page
 router.get('/register',(req,res)=>{
@@ -160,7 +164,7 @@ router.post('/register',(req,res)=>{
                         ecpn3
                     });
                 }
-                else{
+                else if(usertype != 'User Without IOT Device'){
                     User.findOne({macno:macno})
                         .then(user => {
                             if(user) {
