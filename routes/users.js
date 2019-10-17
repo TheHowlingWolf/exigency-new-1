@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+//jsdom for server side dom manipulation
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 //User Model
 const User = require('../models/User');
@@ -19,6 +22,7 @@ router.get('/register',(req,res)=>{
 
 //Register Post Request
 router.post('/register',(req,res)=>{
+    const usertype = req.body.usertype;
     const Fname = req.body.Fname;
     const Lname = req.body.Lname;
     const email =  req.body.email;
@@ -51,9 +55,15 @@ router.post('/register',(req,res)=>{
     if(!Fname || !Lname || !email || !password || !password2 ||
         !bloodgroup || !DOB || !phoneno || !vno || !aadhaar || !city
         ||!add1 || !add2 || !state || !ecfn1 || !ecln1 || !ecpn1
-        || !ecfn2 || !ecln2 || !ecpn2 || !ecfn3 || !ecln3 || !ecpn3 )
+        || !ecfn2 || !ecln2 || !ecpn2 || !ecfn3 || !ecln3 || !ecpn3 || !usertype )
     {
         errors.push({msg:'Please Fill In All Fields'});
+    }
+    //checking type
+    if(usertype != 'User With IOT Device' && usertype != 'User Without IOT Device')
+    {   
+        console.log(usertype);
+        errors.push({msg:'Please select type of registration from above two choices'});
     }
     //check passwords match
     if(password !== password2)
@@ -65,14 +75,14 @@ router.post('/register',(req,res)=>{
         errors.push({msg:'Password should be at least 10 char long'});
     }
     //check valid bloodgroup
-    /*if(bloodgroup != 'O+' || bloodgroup != 'O-' || bloodgroup != 'A+' ||
-    bloodgroup != 'A-' || bloodgroup != 'B+' || bloodgroup != 'B-' ||
-    bloodgroup != 'AB+' || bloodgroup != 'AB-' || bloodgroup != 'o+' || bloodgroup != 'o-' || bloodgroup != 'a+' ||
-    bloodgroup != 'a-' || bloodgroup != 'b+' || bloodgroup != 'b-' ||
-    bloodgroup != 'ab+' || bloodgroup != 'ab-' || bloodgroup != 'Bombay Group' || bloodgroup != 'bombay group')
+    if(bloodgroup != 'O+' && bloodgroup != 'O-' && bloodgroup != 'A+' &&
+    bloodgroup != 'A-' && bloodgroup != 'B+' && bloodgroup != 'B-' &&
+    bloodgroup != 'AB+' && bloodgroup != 'AB-' && bloodgroup != 'o+' && bloodgroup != 'o-' && bloodgroup != 'a+' &&
+    bloodgroup != 'a-' && bloodgroup != 'b+' && bloodgroup != 'b-' &&
+    bloodgroup != 'ab+' && bloodgroup != 'ab-' && bloodgroup != 'Bombay Group' && bloodgroup != 'bombay group')
     {
         errors.push({msg:'Enter a Valid blood group'});
-    }*/
+    }
     if(phoneno.length >10 || phoneno.length<10)
     {
         errors.push({msg:'Enter a valid Number'});
@@ -86,6 +96,7 @@ router.post('/register',(req,res)=>{
     {
         res.render('register',{
             errors,
+            usertype,
             Fname,
             Lname,
             email,
@@ -122,6 +133,7 @@ router.post('/register',(req,res)=>{
                     errors.push({msg:'Email is already registered'});
                     res.render('register',{
                         errors,
+                        usertype,
                         Fname,
                         Lname,
                         email,
@@ -156,6 +168,7 @@ router.post('/register',(req,res)=>{
                                 errors.push({msg:'MACNO is already registered'});
                                 res.render('register',{
                                     errors,
+                                    usertype,
                                     Fname,
                                     Lname,
                                     email,
@@ -184,6 +197,7 @@ router.post('/register',(req,res)=>{
                             }
                             else{
                                 const newUser = new User({
+                                    usertype,
                                     Fname,
                                     Lname,
                                     email,
