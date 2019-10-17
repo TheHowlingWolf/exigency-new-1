@@ -30,11 +30,18 @@ router.get('/hospitals', (req, res) => {
 })
 
 router.post('/webAuth', async(req, res, next) => {
+
     console.log(req.body);
-    res.writeHeader(200, { "Content-Type": "text/html" });
+    if (!req.body.lat || !req.body.long) {
+
+        res.writeHeader(200, { "Content-Type": "text/html" });
+        res.write(JSON.stringify(req.body));
+        res.end("GPS LOCATION ERROR");
+        return;
+    }
     var UserData = await asyncFunctions.checkAuthNo(req.body.authNo);
     if (UserData.length != 1) {
-        res.end("INVALID AUTH NO");
+        res.end('INVALID auth No');
         return;
     } else {
         console.log(UserData);
@@ -48,13 +55,11 @@ router.post('/webAuth', async(req, res, next) => {
             ph2: UserData[0].ecpn2,
             ph3: UserData[0].ecpn3,
         }
-        messages = await findAllDetails(detailsForText);
-        for (var i = 0; i < messages.length; i++) {
-            res.write(messages[i]);
-        }
+        nearbyDetails = await findAllDetails(detailsForText);
+        console.log(nearbyDetails);
+        res.render('gethelp', nearbyDetails);
+        res.end('');
     }
-    res.render('gethelp');
-    res.end('');
 
 })
 
@@ -64,11 +69,19 @@ router.post('/webAuth', async(req, res, next) => {
 
 
 router.post('/iotAuth', async(req, res) => {
+    if (!req.body.lat || !req.body.long) {
+
+        res.writeHeader(200, { "Content-Type": "text/html" });
+        res.write(JSON.stringify(req.body));
+        res.end("GPS LOCATION ERROR");
+        return;
+    }
+
     function findUserData() {
         return new promise(
             (resolve) => {
 
-                UserModel.find({ IOTmac: req.body.mac }, (err, doc) => {
+                UserModel.find({ macno: req.body.mac }, (err, doc) => {
                     if (!err) {
                         resolve(doc);
                     } else {
@@ -100,6 +113,7 @@ router.post('/iotAuth', async(req, res) => {
             ph1: UserData[0].ecpn1,
             ph2: UserData[0].ecpn2,
             ph3: UserData[0].ecpn3,
+
         }
         messages = await findAllDetails(detailsForText);
         for (var i = 0; i < messages.length; i++) {
@@ -191,6 +205,15 @@ async function findAllDetails(UserData) {
 
     })
 
+    nearbyDetails = {
+        HosName: Hosname,
+        HosPhone_number: Hosphone_number,
+        PoliceName: PoliceName,
+        PolPhone_number: Polphone_number,
+        SOS1: UserData.ph1,
+        SOS2: UserData.ph2,
+        SOS3: UserData.ph3
+    }
 
 
 
@@ -204,8 +227,9 @@ async function findAllDetails(UserData) {
     messages.push("Police station Phone = " + Polphone_number + "<br>");
 
     messages.push("<br>MESSAGE SENT SUCCESSFULLY");
+    console.log(messages);
 
-    return messages;
+    return nearbyDetails;
 
 
 

@@ -1,44 +1,101 @@
-<section id="Navbar"  class="py-3 d-none">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
-               <a href="index.html" class="navbar-brand ml-4">Exigency Network</a>
-               <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+<section id="Navbar" class="py-3 ">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+        <a href="index.html" class="navbar-brand ml-4">Exigency Network</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                        <span class="navbar-toggler-icon">
                        </span>
                </button>
-   
-               <div class="collapse navbar-collapse" id="navbarCollapse">
-                       <ul class="navbar-nav ml-auto">
-                               <li class="nav-item">
-                                       <a href="/" class="nav-link">Home</a>
-                               </li>
-                               <li class="nav-item">
-                                       <a href="/about-us-loggedout" class="nav-link">Explore Us</a>
-                               </li>
-                               <li class="nav-item">
-                                       <a href="/users/login" class="nav-link">Log In</a>
-                               </li>
-                               <li class="nav-item">
-                                       <a href="/users/Register" class="nav-link">Register</a>
-                               </li>
-                       </ul>
-               </div>
-       </nav>
-                     
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about-us-loggedout" class="nav-link">Explore Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/users/login" class="nav-link">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/users/Register" class="nav-link">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
 </section>
-<section id="hero-area" class="py-3">
+<section id="hero-area" class="py-3" style="margin: 0;padding:0;overflow:hidden">
     <div class="primary-overlay text-white">
         <div class="container">
-                <div id="hero-banner" class="row w-100 align-item-center">
-                    <div class="col">
-                            <div class="text-center align-self-center align-center">
-                                    <img src="/images/hero-area-banner-icon.png" alt="" class="hero-png pb-2 img-fluid">
-                            </div>
-                            <div class="text-center align-self-center align-center">
-                                    <h1>Help Coming Soon</h1>
-                                    <p class="lead">Breathe, Keep Calm and We Got You Covered!</p>
-                            </div>
-                    </div> 
+            <div id="hero-banner" class="row align-item-center" style="display: none;">
+                <div class="col">
+                    <div class="text-center align-self-center align-center" >
+                        <img src="/images/hero-area-banner-icon.png" alt="" class="hero-png pb-2 img-fluid">
+                    </div>
+                    <div class="text-center align-self-center align-center">
+                        <h1>Help Coming Soon</h1>
+                        <p class="lead">Breathe, Keep Calm and We Got You Covered!</p>
+                        <div class="icon-down"><i class="fas fa-chevron-down fa-2x pt-2"></i></div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="margin: 0;padding:0;overflow:hidden">
+    <div class="align-self-center text-center row justify-content-center py-5">
+        <div class="col-12">
+            <h3 class="py-4">CONTACTED</h3>
+        </div>
+        <div class="col-md-7 col-sm-12">
+            <table align="center" class="table text-center table-striped table-dark">
+
+                <tr>
+                    <th>Hospital </th>
+                    <td>
+                        <%= nearbyDetails.HosName %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Hospital Phone</th>
+                    <td>
+                        <%= nearbyDetails.HosPhone_number %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Police Station</th>
+                    <td>
+                        <%= nearbyDetails.PoliceName %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Police Phone</th>
+                    <td>
+                        <%= nearbyDetails.PolPhone_number %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>SOS 1</th>
+                    <td>
+                        <%= nearbyDetails.SOS1 %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>SOS 2</th>
+                    <td>
+                        <%= nearbyDetails.SOS2 %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>SOS 3 </th>
+                    <td>
+                        <%= nearbyDetails.SOS3 %>
+                    </td>
+                </tr>
+
+            </table>
+
         </div>
     </div>
 </section>
