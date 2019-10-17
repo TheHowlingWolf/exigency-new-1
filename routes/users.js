@@ -75,7 +75,7 @@ router.post('/register', async(req, res) => {
     //check req fields
     if (!Fname || !Lname || !email || !password || !password2 ||
         !bloodgroup || !DOB || !phoneno || !vno || !aadhaar || !city ||
-        !add1 || !add2 || !state || !ecfn1 || !ecln1 || !ecpn1 ||
+        !add1 || !state || !ecfn1 || !ecln1 || !ecpn1 ||
         !ecfn2 || !ecln2 || !ecpn2 || !ecfn3 || !ecln3 || !ecpn3 || !usertype) {
         errors.push({ msg: 'Please Fill In All Fields' });
     }
