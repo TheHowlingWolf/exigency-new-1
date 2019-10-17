@@ -29,7 +29,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 })
 
-//riderect 
+//redirect 
 router.get('/index', (req, res) => {
     res.render('index');
 })
