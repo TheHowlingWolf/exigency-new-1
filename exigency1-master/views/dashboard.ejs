@@ -1,0 +1,201 @@
+<section id="Navbar" class="py-3">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+            <a href="/index-loggedin" class="navbar-brand"><img src="/images/exigency-logo.png" class="mx-3" width="40" height="40">Exigency Network</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon">
+                        </span>
+                </button>
+    
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/index-loggedin" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item <%= typeof title == 'analysis' ? active: '' %>">
+                            <a href="/analysis" class="nav-link">Analysis</a>
+                        </li>
+                    <li class="nav-item">
+                        <a href="/users/logout" class="nav-link">Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">Hi <%= Fname %>!</a>
+                        </li>
+                </ul>
+            </div>
+        </nav>
+    
+    </section>
+<section id="hero-area" class="py-3">
+    <div class="primary-overlay text-white">
+        <div class="container">
+            <div id="hero-banner" class="row align-item-center" style="display: none;">
+                <div class="col">
+                    <div class="text-center align-self-center align-center">
+                        <img src="/images/hero-area-banner-icon.png" alt="" class="hero-png pb-2 img-fluid">
+                    </div>
+                    <div class="text-center align-self-center align-center">
+                        <h1>Welcome
+                            <%= Fname %>
+                                <%= Lname %>
+                        </h1>
+                        <p class="lead">Welcome to your profile!</p>
+                        <div class="icon-down"><i class="fas fa-chevron-down fa-2x pt-2"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="User-dashboard" style="margin: 0;padding: 0;">
+    <div class="cointainer p-1 ">
+        <div class="row justify-items-center text-center align-item-center">
+            <div class="col-lg-3  align-self-center">
+                <img src="/images/propic.png" alt="" class="rounded-circle img-fluid pt-5 pb-2" id="propic">
+            </div>
+            <div class="col-lg-9  align-self-center">
+                <table class="table table-borderless table-hover table-light">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan=2> Your Profile</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>User Type::</td>
+                            <td>
+                                <%= usertype %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name::</td>
+                            <td>
+                                <%= Fname %>
+                                    <%= Lname %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email::</td>
+                            <td>
+                                <%= email %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Blood Group::</td>
+                            <td>
+                                <%= bloodgroup %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth::</td>
+                            <td>
+                                <%= DOB %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number::</td>
+                            <td>
+                                <%= phoneno %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Vehicle Number::</td>
+                            <td>
+                                <%= vno %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>IOT Device Number::</td>
+                            <td>
+                                <%= macno %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Aadhar::</td>
+                            <td>
+                                <%= aadhaar %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>City::</td>
+                            <td>
+                                <%= city %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address Line1::</td>
+                            <td>
+                                <%= add1 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address Line2::</td>
+                            <td>
+                                <%= add2 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>State::</td>
+                            <td>
+                                <%= state %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Authentication Number::</td>
+                            <td>
+                                <%= authNo %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Contact 1 Name::</td>
+                            <td>
+                                <%= ecfn1 %>
+                                    <%= ecln1 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Contact 1 Phone::</td>
+                            <td>
+                                <%= ecpn1 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Contact 2 Name::</td>
+                            <td>
+                                <%= ecfn2 %>
+                                    <%= ecln2 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Contact 2 Phone::</td>
+                            <td>
+                                <%= ecpn2 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Contact 3 Name::</td>
+                            <td>
+                                <%= ecfn3 %>
+                                    <%= ecln3 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Contact 3 Phone::</td>
+                            <td>
+                                <%= ecpn3 %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="text-center py-3">
+    <a class="btn btn-rounded btn-danger" href="/index-loggedin">Get Help!</a>
+</div>
+
+</body>
